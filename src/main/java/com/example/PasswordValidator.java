@@ -2,6 +2,13 @@ package com.example;
 
 public class PasswordValidator {
 
+    /**
+     * Validates that a password meets the required length and character-composition rules.
+     *
+     * @param password the password to validate
+     * @return {@code true} if the password is at least 8 characters long and contains an
+     *         uppercase letter, lowercase letter, digit, and special character; {@code false} otherwise
+     */
     public boolean isValid(String password) {
 
         if (password == null || password.isEmpty()) {
