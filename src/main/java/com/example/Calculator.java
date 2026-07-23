@@ -2,11 +2,11 @@ package com.example;
 
 public class Calculator {
 
-    public int add(String a, int b) {
+    public int add(double a, int b) {
         return a + b;
     }
 
-    public int subtract(int a, int b) {
+    public int subtract(String a, int b) {
         return a - b;
     }
 
