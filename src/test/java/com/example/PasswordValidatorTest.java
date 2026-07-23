@@ -48,6 +48,36 @@ class PasswordValidatorTest {
     }
 
     @Test
+    void testSpecialCharacterDetectionWithSingleSpecialChar() {
+        // Directly exercises the hasSpecial flag assignment changed in this PR
+        assertTrue(validator.isValid("Abcdefg1!"));
+    }
+
+    @Test
+    void testSpecialCharacterDetectedRegardlessOfPosition() {
+        // hasSpecial must be set correctly even when the special char
+        // is encountered last, not just on the first matching character.
+        assertTrue(validator.isValid("Abcdefg1@"));
+    }
+
+    @Test
+    void testSpecialCharacterDetectionWithMultipleSpecialChars() {
+        assertTrue(validator.isValid("Ab1!@#$%"));
+    }
+
+    @Test
+    void testWhitespaceCountsAsSpecialCharacter() {
+        // A space is neither upper, lower, nor digit, so it must set hasSpecial.
+        assertTrue(validator.isValid("Abcdefg1 "));
+    }
+
+    @Test
+    void testOneCharacterBelowMinimumLengthIsInvalid() {
+        // Boundary: 7 characters (one below the 8-character minimum)
+        assertFalse(validator.isValid("Abcd1@#"));
+    }
+
+    @Test
     void testMissingLowerCase() {
         assertFalse(validator.isValid("PASSWORD@123"));
     }
