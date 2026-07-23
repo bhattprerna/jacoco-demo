@@ -1,0 +1,57 @@
+# CodeRabbit Configuration
+
+language: en-US
+
+reviews:
+  profile: assertive
+
+  # Generate summary of the PR
+  high_level_summary: true
+
+  # Provide detailed review comments
+  detailed_review: true
+
+  # Automatically review pull requests
+  auto_review:
+    enabled: true
+
+  # Request changes when critical issues are found
+  request_changes_workflow: true
+
+  # Review specific files only
+  path_filters:
+    - "src/**"
+    - "pom.xml"
+    - "*.java"
+
+  # Ignore generated files
+  ignore:
+    - "target/**"
+    - "*.class"
+
+
+# Custom review instructions
+instructions:
+
+  - "Review Java code for correctness, readability, and maintainability."
+
+  - "Identify logical errors and edge cases."
+
+  - "Check whether the implementation satisfies the requirement."
+
+  - "Classify findings as Correct, Partially Correct, or Incorrect when possible."
+
+  - "Suggest improved code examples for detected issues."
+
+  - "Check exception handling and error scenarios."
+
+  - "Review security best practices."
+
+  - "Identify potential null pointer issues."
+
+  - "Check SQL injection, hardcoded secrets, and unsafe coding practices."
+
+
+# Chat configuration
+chat:
+  auto_reply: true
