@@ -10,7 +10,30 @@ class CalculatorTest {
 
     @Test
     void testAdd() {
-        assertEquals(8.0, calculator.add(5.0, 3));
+        assertEquals(8, calculator.add(5, 3));
+    }
+
+    @Test
+    void testAddNegativeNumbers() {
+        assertEquals(-8, calculator.add(-5, -3));
+    }
+
+    @Test
+    void testAddPositiveAndNegative() {
+        assertEquals(2, calculator.add(5, -3));
+    }
+
+    @Test
+    void testAddWithZero() {
+        assertEquals(5, calculator.add(5, 0));
+        assertEquals(0, calculator.add(0, 0));
+    }
+
+    @Test
+    void testAddIntegerOverflowBoundary() {
+        // Regression: add now takes ints (not doubles), so results wrap around
+        // on overflow instead of rounding as a double would.
+        assertEquals(Integer.MIN_VALUE, calculator.add(Integer.MAX_VALUE, 1));
     }
 
     @Test
