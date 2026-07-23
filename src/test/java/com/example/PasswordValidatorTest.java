@@ -24,6 +24,30 @@ class PasswordValidatorTest {
     }
 
     @Test
+    void testUpperCaseDetectionWithSingleUpperCaseChar() {
+        // Directly exercises the hasUpper flag assignment changed in this PR
+        assertTrue(validator.isValid("Abcdef1@"));
+    }
+
+    @Test
+    void testUpperCaseDetectionWithMultipleUpperCaseChars() {
+        assertTrue(validator.isValid("ABCdef1@"));
+    }
+
+    @Test
+    void testUpperCaseDetectedRegardlessOfPosition() {
+        // hasUpper must be set correctly even when the uppercase char
+        // is encountered last, not just on the first matching character.
+        assertTrue(validator.isValid("abc123@Z"));
+    }
+
+    @Test
+    void testExactMinimumLengthWithAllCharacterTypes() {
+        // Boundary: exactly 8 characters, including the required uppercase char
+        assertTrue(validator.isValid("Abcd1@#$"));
+    }
+
+    @Test
     void testMissingLowerCase() {
         assertFalse(validator.isValid("PASSWORD@123"));
     }
