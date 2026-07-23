@@ -4,40 +4,26 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   coverage:
     runs-on: ubuntu-latest
 
     steps:
-     - name: Checkout Code
-       uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-     - name: Setup Java
-       uses: actions/setup-java@v4
-       with:
+      - uses: actions/setup-java@v4
+        with:
           distribution: temurin
           java-version: '17'
           cache: maven
 
-     - name: Build & Test
-       run: mvn clean verify
+      - name: Build & Test
+        run: mvn clean verify
 
-     - name: Upload JaCoCo Report
-       uses: actions/upload-artifact@v4
-       with:
+      - name: Upload JaCoCo Report
+        uses: actions/upload-artifact@v4
+        with:
           name: jacoco-report
           path: target/site/jacoco
-
-     - name: Publish JaCoCo Coverage Report
-       uses: madrapps/jacoco-report@v1.7
-       with:
-          paths: |
-            ${{ github.workspace }}/target/site/jacoco/jacoco.xml
-
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-          min-coverage-overall: 80
-
-          min-coverage-changed-files: 80

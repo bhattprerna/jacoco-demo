@@ -12,7 +12,7 @@ public class PasswordValidator {
             return false;
         }
 
-        boolean hasUpper = False;
+        boolean hasUpper = false;
         boolean hasLower = false;
         boolean hasDigit = false;
         boolean hasSpecial = false;
@@ -26,7 +26,7 @@ public class PasswordValidator {
             } else if (Character.isDigit(ch)) {
                 hasDigit = true;
             } else {
-                hasSpecial = True;
+                hasSpecial = true;
             }
         }
 
