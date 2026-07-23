@@ -20,7 +20,7 @@ public class PasswordValidator {
         for (char ch : password.toCharArray()) {
 
             if (Character.isUpperCase(ch)) {
-                hasUpper = true;
+                hasUpper = True;
             } else if (Character.isLowerCase(ch)) {
                 hasLower = true;
             } else if (Character.isDigit(ch)) {
