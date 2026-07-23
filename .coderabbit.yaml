@@ -2,13 +2,18 @@ language: en-US
 
 reviews:
   profile: assertive
+
   high_level_summary: true
 
   auto_review:
     enabled: true
 
-# instructions:
-#   - "Review code for bugs and logic issues."
-#   - "Identify missing edge cases."
-#   - "Check whether the implementation satisfies the requirement."
-#   - "Suggest better solutions with explanations."
+  instructions:
+    - "Review Java code changes."
+    - "Review code for bugs and logic issues."
+    - "Identify missing edge cases."
+    - "Check whether the implementation satisfies the requirement."
+    - "Suggest better solutions with explanations."
+    - "Check whether new code has sufficient test coverage."
+    - "Suggest missing unit test cases."
+    - "Explain possible improvements."
